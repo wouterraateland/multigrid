@@ -136,7 +136,7 @@ function ResultData({ data, type = "number", ...props }) {
 function Result({ label, ...props }) {
   const node = document.createElement("div");
   node.className =
-    "flex flex-col gap-2 p-2 rounded-md bg-d-100 border snap-center";
+    "flex flex-col gap-2 p-2 bg-d-100 snap-center rounded-md border";
   node.appendChild(typeof label === "string" ? P({ text: label }) : label);
   node.appendChild(ResultData({ ...props }));
   return node;

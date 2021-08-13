@@ -1,11 +1,17 @@
-function MultiGridResult({ velocity, pressure, initialError, error }) {
+function MultiGridResult({
+  iteration,
+  velocity,
+  pressure,
+  initialError,
+  error,
+}) {
   const node = document.createElement("div");
-  node.className = "flex gap-2 px-4 sm:px-8 max-w-full overflow-x-auto snap-x";
+  node.className = "flex max-w-full overflow-x-auto snap-x gap-2 px-4 sm:px-8";
   node.appendChild(Result({ data: pressure, label: "Pressure" }));
   node.appendChild(
     Result({
       data: velocity,
-      label: "Resulting velocity",
+      label: iteration === 0 ? "Initial velocity" : "Resulting velocity",
       type: "vec2",
       min: 0,
       max: 1,
@@ -16,7 +22,11 @@ function MultiGridResult({ velocity, pressure, initialError, error }) {
   const percentage = ((sum / initialSum) * 100).toFixed(0);
 
   const label = document.createElement("p");
-  label.appendChild(document.createTextNode("Residual error: "));
+  label.appendChild(
+    document.createTextNode(
+      iteration === 0 ? "Initial error: " : "Residual error: "
+    )
+  );
   label.appendChild(Exponent({ value: sum }));
   label.appendChild(document.createTextNode(` (${percentage}%)`));
 
@@ -76,6 +86,7 @@ function MultiGrid({ velocity, divergence, n }) {
     }
 
     const newNode = MultiGridResult({
+      iteration,
       pressure: pressure[iteration],
       velocity: resultingVelocity[iteration],
       initialError: residualError[0],

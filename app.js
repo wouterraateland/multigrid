@@ -1,7 +1,7 @@
 function run() {
   const n = 16;
   const row = document.createElement("div");
-  row.className = "flex gap-2 px-4 sm:px-8 overflow-x-auto max-w-full snap-x";
+  row.className = "flex overflow-x-auto max-w-full snap-x gap-2 px-4 sm:px-8";
 
   const velocity = Array(n)
     .fill()
@@ -11,7 +11,10 @@ function run() {
         .map((_, x) =>
           velocityBndCond(
             {
-              x: Math.pow(x - n / 2, 2) + Math.pow(y - n / 2, 2) < 6 ? 1 : 0,
+              x:
+                Math.pow(x + 0.5 - n / 2, 2) + Math.pow(y + 0.5 - n / 2, 2) <= 8
+                  ? 1
+                  : 0,
               y: 0,
             },
             x,
