@@ -74,6 +74,9 @@ a {
 .max-w-sm {
   max-width: 40rem;
 }
+.max-w-full {
+  max-width: 100%;
+}
 .h-4 {
   height: 1rem;
 }
@@ -84,9 +87,25 @@ a {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
 }
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .p-2 {
   padding: 0.5rem;
@@ -148,16 +167,50 @@ a {
 .overflow-hidden {
   overflow: hidden;
 }
+.overflow-x-auto {
+  overflow-x: auto;
+}
 .relative {
   position: relative;
+}
+.snap-x {
+  scroll-snap-type: x mandatory;
+}
+.snap-center {
+  scroll-snap-align: center;
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  .sm\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .sm\:py-8 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .sm\:flex-row {
+    flex-direction: row;
+  }
 }
 
 /* Custom classes */
 .arrow {
   position: absolute;
   z-index: 1;
-  height: 1px;
-  transform-origin: 0.5px 0.5px;
-  background-color: #fff;
-  box-shadow: 0 0 1px 1px #0009;
+  width: 16px;
+  height: 2px;
+  transform-origin: 1px 1px;
+  background: linear-gradient(90deg, #0000, #000 60%);
+  border-radius: 1px;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

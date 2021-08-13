@@ -71,8 +71,12 @@ function ResultGrid({ data, min, max, type }) {
         arrow.className = "arrow";
         arrow.style.top = `${y + 0.5}rem`;
         arrow.style.left = `${x + 0.5}rem`;
-        arrow.style.width = `${Math.floor(12 * magnitudeNormalized)}px`;
-        arrow.style.transform = `rotate(${Math.atan2(value.y, value.x)}rad)`;
+        // arrow.style.width = `${2 + 12 * magnitudeNormalized}px`;
+        // arrow.style.height = `${1 + magnitudeNormalized}px`;
+        arrow.style.transform = `scale(${magnitudeNormalized}) rotate(${Math.atan2(
+          value.y,
+          value.x
+        )}rad)`;
         node.appendChild(arrow);
       }
     })
@@ -131,7 +135,8 @@ function ResultData({ data, type = "number", ...props }) {
 
 function Result({ label, ...props }) {
   const node = document.createElement("div");
-  node.className = "flex flex-col gap-2 p-2 rounded-md bg-d-100 border";
+  node.className =
+    "flex flex-col gap-2 p-2 rounded-md bg-d-100 border snap-center";
   node.appendChild(typeof label === "string" ? P({ text: label }) : label);
   node.appendChild(ResultData({ ...props }));
   return node;
@@ -148,7 +153,7 @@ function PressureHeader({ title, onChange }) {
   }
 
   const node = document.createElement("div");
-  node.className = "flex gap-8 items-center";
+  node.className = "flex flex-col sm:flex-row gap-8 items-center px-4 sm:px-8";
   node.appendChild(P({ text: title, className: "text-xl" }));
 
   const controls = document.createElement("div");

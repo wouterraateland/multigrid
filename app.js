@@ -1,7 +1,7 @@
 function run() {
   const n = 16;
   const row = document.createElement("div");
-  row.className = "flex gap-2";
+  row.className = "flex gap-2 px-4 sm:px-8 overflow-x-auto max-w-full snap-x";
 
   const velocity = Array(n)
     .fill()

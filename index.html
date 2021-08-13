@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Multigrid solver in action</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="flex flex-col items-center bg-d-0">
-    <div class="flex flex-col gap-8 p-8">
-      <div class="flex items-start justify-between">
-        <header class="flex flex-col gap-4 max-w-sm">
-          <h1>Projection</h1>
-          <div class="flex flex-col gap-2">
-            <p>Visualisation of velocity projection using both a single grid method and a multigrid method.</h1>
-            <p><a href="https://github.com/wouterraateland/multigrid">Source code</a></p>
-          </div>
-        </header>
-        <button class="border px-3 py-1 rounded-md bg-d-100" onclick="document.body.classList.toggle(`dark`)">Toggle light / dark</button>
-      </div>
-      <div id="root" class="flex flex-col gap-8"></div>
+  <body class="flex flex-col gap-8 items-center bg-d-0 py-4 sm:py-8">
+    <div class="flex flex-col sm:flex-row items-start justify-between gap-8 px-4 sm:px-8">
+      <header class="flex flex-col gap-4 max-w-sm">
+        <h1>Projection</h1>
+        <div class="flex flex-col gap-2">
+          <p>Visualisation of velocity projection using both a single grid method and a multigrid method.</h1>
+          <p><a href="https://github.com/wouterraateland/multigrid">Source code</a></p>
+        </div>
+      </header>
+      <button class="border px-3 py-1 rounded-md bg-d-100" onclick="document.body.classList.toggle(`dark`)">Toggle light / dark</button>
     </div>
+    <div id="root" class="flex flex-col gap-8 max-w-full"></div>
     <script type="text/javascript" src="utils.js"></script>
     <script type="text/javascript" src="components.js"></script>
     <script type="text/javascript" src="singlegrid.js"></script>

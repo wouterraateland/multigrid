@@ -1,6 +1,6 @@
 function SingleGridResult({ velocity, pressure, initialError, error }) {
   const node = document.createElement("div");
-  node.className = "flex gap-2";
+  node.className = "flex gap-2 max-w-full px-4 sm:px-8 overflow-x-auto snap-x";
   node.appendChild(Result({ data: pressure, label: "Pressure" }));
   node.appendChild(
     Result({

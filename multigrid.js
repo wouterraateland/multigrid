@@ -1,6 +1,6 @@
 function MultiGridResult({ velocity, pressure, initialError, error }) {
   const node = document.createElement("div");
-  node.className = "flex gap-2";
+  node.className = "flex gap-2 px-4 sm:px-8 max-w-full overflow-x-auto snap-x";
   node.appendChild(Result({ data: pressure, label: "Pressure" }));
   node.appendChild(
     Result({
@@ -40,7 +40,7 @@ function MultiGrid({ velocity, divergence, n }) {
   const residualError = [
     calcError(pressure[pressure.length - 1], divergence, n),
   ];
-  let resultNode;
+  let prevNode;
 
   function setIteration(iteration) {
     while (pressure.length < iteration + 1) {
@@ -75,16 +75,17 @@ function MultiGrid({ velocity, divergence, n }) {
       );
     }
 
-    if (resultNode) {
-      node.removeChild(resultNode);
-    }
-    resultNode = MultiGridResult({
+    const newNode = MultiGridResult({
       pressure: pressure[iteration],
       velocity: resultingVelocity[iteration],
       initialError: residualError[0],
       error: residualError[iteration],
     });
-    node.appendChild(resultNode);
+
+    if (prevNode) {
+      node.removeChild(prevNode);
+    }
+    prevNode = node.appendChild(newNode);
   }
 
   node.appendChild(
